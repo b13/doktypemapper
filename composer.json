@@ -1,0 +1,12 @@
+{
+	"name": "b13/doktypemapper",
+	"type": "typo3-cms-extension",
+	"description": "Maps your page.doktype to page.backend_layout",
+	"homepage": "https://b13.com",
+	"license": ["GPL-2.0-or-later"],
+	"autoload": {
+		"psr-4": {
+			"B13\\Doktypemapper\\": "Classes/"
+		}
+	}
+}
