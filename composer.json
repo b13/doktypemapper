@@ -4,6 +4,11 @@
 	"description": "Maps your page.doktype to page.backend_layout",
 	"homepage": "https://b13.com",
 	"license": ["GPL-2.0-or-later"],
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "doktypemapper"
+		}
+	},
 	"autoload": {
 		"psr-4": {
 			"B13\\Doktypemapper\\": "Classes/"
