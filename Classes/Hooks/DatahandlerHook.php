@@ -13,11 +13,14 @@ namespace B13\Doktypemapper\Hooks;
  */
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
-class DatahandlerHook
+class DatahandlerHook implements SingletonInterface
 {
+    protected $previousBackendLayout;
+
     /**
      * @param array $fieldArray
      * @param string $table
@@ -33,17 +36,24 @@ class DatahandlerHook
         if ($table === 'pages') {
             if (!empty($fieldArray['doktype'])) {
                 if (MathUtility::canBeInterpretedAsInteger($id)) {
-                    $pageTsConfig = BackendUtility::getPagesTSconfig($id);
-                } elseif (!empty($fieldArray['pid'])) {
-                    $pageTsConfig = BackendUtility::getPagesTSconfig($fieldArray['pid']);
+                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs($id));
+                } elseif (!empty($fieldArray['pid']) && MathUtility::canBeInterpretedAsInteger($fieldArray['pid'])) {
+                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs($fieldArray['pid']));
                 } else {
+                    // this can happen with create multiple pages wizard, pid is "-NEW<cnt>"
+                    // we can use the previous backend_layout
+                    if ($this->previousBackendLayout !== null) {
+                        $fieldArray['backend_layout'] = $this->previousBackendLayout;
+                    }
                     // this can happen on a new root page
                     return;
                 }
                 $backendLayouts = (array)$pageTsConfig['mod.']['web_layout.']['BackendLayouts.'];
                 foreach ($backendLayouts as $identifier => $data) {
                     if (!empty($data['config.']['backend_layout.']['doktype']) && (int)$data['config.']['backend_layout.']['doktype'] === (int)$fieldArray['doktype']) {
-                        $fieldArray['backend_layout'] = 'pagets__' . str_replace('.', '', $identifier);
+                        $backendLayout = 'pagets__' . str_replace('.', '', $identifier);
+                        $fieldArray['backend_layout'] = $backendLayout;
+                        $this->previousBackendLayout = $backendLayout;
                         break;
                     }
                 }
