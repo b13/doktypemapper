@@ -36,9 +36,9 @@ class DatahandlerHook implements SingletonInterface
         if ($table === 'pages') {
             if (!empty($fieldArray['doktype'])) {
                 if (MathUtility::canBeInterpretedAsInteger($id)) {
-                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs($id));
+                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs((int)$id));
                 } elseif (!empty($fieldArray['pid']) && MathUtility::canBeInterpretedAsInteger($fieldArray['pid'])) {
-                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs($fieldArray['pid']));
+                    $pageTsConfig = BackendUtility::getPagesTSconfig((int)abs((int)$fieldArray['pid']));
                 } else {
                     // this can happen with create multiple pages wizard, pid is "-NEW<cnt>"
                     // we can use the previous backend_layout
