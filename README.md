@@ -1,3 +1,5 @@
+![CI](https://github.com/b13/doktypemapper/actions/workflows/ci.yml/badge.svg)
+
 # EXT:doktypemapper - A TYPO3 Extension for mapping doktypes to backend_layouts
 
 ## Features

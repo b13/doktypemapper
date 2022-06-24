@@ -6,12 +6,45 @@
 	"license": ["GPL-2.0-or-later"],
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "doktypemapper"
+			"extension-key": "doktypemapper",
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"app-dir": ".Build",
+			"web-dir": ".Build/Web"
 		}
+	},
+	"require": {
+		"php": "^7.2 || ~8.0",
+		"typo3/cms-core": "^10.4 || ^11.5",
+		"typo3/cms-backend": "^10.4 || ^11.5"
 	},
 	"autoload": {
 		"psr-4": {
 			"B13\\Doktypemapper\\": "Classes/"
+		}
+	},
+	"require-dev": {
+		"typo3/testing-framework": "^6",
+		"phpunit/phpunit": "^8.4",
+		"typo3/coding-standards": "^0.5",
+		"phpstan/phpstan": "^0.12.11",
+		"typo3/tailor": "^1.0"
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin",
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		}
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"B13\\Doktypemapper\\Tests\\": "Tests/"
 		}
 	}
 }
