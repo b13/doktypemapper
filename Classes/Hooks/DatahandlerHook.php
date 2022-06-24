@@ -48,7 +48,7 @@ class DatahandlerHook implements SingletonInterface
                     // this can happen on a new root page
                     return;
                 }
-                $backendLayouts = (array)$pageTsConfig['mod.']['web_layout.']['BackendLayouts.'];
+                $backendLayouts = $pageTsConfig['mod.']['web_layout.']['BackendLayouts.'] ?? [];
                 foreach ($backendLayouts as $identifier => $data) {
                     if (!empty($data['config.']['backend_layout.']['doktype']) && (int)$data['config.']['backend_layout.']['doktype'] === (int)$fieldArray['doktype']) {
                         $backendLayout = 'pagets__' . str_replace('.', '', $identifier);
