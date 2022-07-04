@@ -13,9 +13,9 @@ namespace B13\Doktypemapper\Hooks;
  */
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\MathUtility;
-use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 class DatahandlerHook implements SingletonInterface
 {
