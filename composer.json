@@ -13,9 +13,8 @@
 		}
 	},
 	"require": {
-		"php": "^7.2 || ~8.0",
-		"typo3/cms-core": "^10.4 || ^11.5",
-		"typo3/cms-backend": "^10.4 || ^11.5"
+		"php": "^7.4 || ^8.0",
+		"typo3/cms-backend": "^10.4 || ^11.5 || 12.*.*@dev"
 	},
 	"autoload": {
 		"psr-4": {
@@ -23,10 +22,9 @@
 		}
 	},
 	"require-dev": {
-		"typo3/testing-framework": "^6",
-		"phpunit/phpunit": "^8.4",
+		"typo3/testing-framework": "~7.0@dev",
 		"typo3/coding-standards": "^0.5",
-		"phpstan/phpstan": "^0.12.11",
+		"phpstan/phpstan": "^1.4.8",
 		"typo3/tailor": "^1.0"
 	},
 	"config": {

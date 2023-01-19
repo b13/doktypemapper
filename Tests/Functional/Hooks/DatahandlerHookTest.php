@@ -20,7 +20,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class DatahandlerHookTest extends FunctionalTestCase
 {
-    protected $testExtensionsToLoad = [
+    protected array $testExtensionsToLoad = [
         'typo3conf/ext/doktypemapper',
     ];
 
@@ -29,8 +29,9 @@ class DatahandlerHookTest extends FunctionalTestCase
      */
     public function backendLayoutIsSetForConfiguredDoktype(): void
     {
-        $this->importDataSet(ORIGINAL_ROOT . 'typo3conf/ext/doktypemapper/Tests/Functional/Hooks/Fixtures/Datahandler/backendLayoutIsSetForConfiguredDoktype.xml');
-        $backendUser = $this->setUpBackendUserFromFixture(1);
+        $this->importCSVDataSet(ORIGINAL_ROOT . 'typo3conf/ext/doktypemapper/Tests/Functional/Hooks/Fixtures/Datahandler/backendLayoutIsSetForConfiguredDoktype.csv');
+        $this->importCSVDataSet(ORIGINAL_ROOT . 'typo3conf/ext/doktypemapper/Tests/Functional/Hooks/Fixtures/Datahandler/be_users.csv');
+        $backendUser = $this->setUpBackendUser(1);
         $GLOBALS['BE_USER'] = $backendUser;
         Bootstrap::initializeLanguageObject();
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);

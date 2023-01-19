@@ -1,0 +1,11 @@
+parameters:
+  level: 5
+
+  paths:
+    - %currentWorkingDirectory%/Classes
+    - %currentWorkingDirectory%/Tests
+
+  ignoreErrors:
+    -
+      message: '#Constant ORIGINAL_ROOT not found.#'
+      path: %currentWorkingDirectory%/Tests
