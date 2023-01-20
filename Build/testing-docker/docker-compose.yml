@@ -82,10 +82,12 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        if [ ${TYPO3} -eq 10 ]; then
-          composer install --no-progress --no-interaction;
+        if [ ${TYPO3} -eq 11 ]; then
+          composer require typo3/cms-backend:^11.5 --dev -W --no-progress --no-interaction
+        elif [ ${TYPO3} -eq 10 ]; then
+          composer require friendsofphp/php-cs-fixer:~3.9.0 typo3/cms-backend:^10.4 typo3/testing-framework:^6 --dev -W --no-progress --no-interaction
         else
-          composer remove typo3/cms* --dev --no-progress --no-interaction && composer require typo3/cms-install:^11.5 typo3/cms-fluid-styled-content:^11.5 --dev -W --no-progress --no-interaction
+          composer config --no-interaction --no-plugins allow-plugins.sbuerk/typo3-cmscomposerinstallers-testingframework-bridge true && composer require typo3/cms-backend:12.*.*@dev sbuerk/typo3-cmscomposerinstallers-testingframework-bridge:^0.0.1 --dev -W --no-progress --no-interaction
         fi
       "
 

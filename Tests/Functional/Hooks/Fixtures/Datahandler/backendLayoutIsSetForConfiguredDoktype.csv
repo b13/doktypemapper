@@ -1,0 +1,14 @@
+"pages"
+,"uid","pid","TSconfig"
+,1,0,"<![CDATA[
+mod.web_layout.BackendLayouts {
+  exampleKey {
+    title = Example
+    config {
+      backend_layout {
+        doktype = 144
+      }
+    }
+  }
+}
+            ]]>"
