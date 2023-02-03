@@ -6,6 +6,8 @@
 
 By selecting the `doktype` of a page the value of the field ``backend_layout`` is automatically set. There is no need for editors to select a ``backend_layout``. In fact it is recommended to hide the fields ``backend_layout`` and ``backend_layout_next_level`` from editors.
 
+Find more about how we use this extension at b13, including examples, [in this blog post.](https://b13.com/blog/simplify-your-typo3-page-configuration)
+
 ## Installation
 
 Install this extension via `composer req b13/doktypemapper` and activate
