@@ -25,7 +25,8 @@
 		"typo3/testing-framework": "~7.0@dev",
 		"typo3/coding-standards": "^0.5",
 		"phpstan/phpstan": "^1.4.8",
-		"typo3/tailor": "^1.0"
+		"typo3/tailor": "^1.0",
+		"phpunit/phpunit": "^9.5"
 	},
 	"config": {
 		"vendor-dir": ".Build/vendor",
