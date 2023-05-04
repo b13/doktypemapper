@@ -29,8 +29,8 @@ class DatahandlerHookTest extends FunctionalTestCase
      */
     public function backendLayoutIsSetForConfiguredDoktype(): void
     {
-        $this->importCSVDataSet(ORIGINAL_ROOT . 'typo3conf/ext/doktypemapper/Tests/Functional/Hooks/Fixtures/Datahandler/backendLayoutIsSetForConfiguredDoktype.csv');
-        $this->importCSVDataSet(ORIGINAL_ROOT . 'typo3conf/ext/doktypemapper/Tests/Functional/Hooks/Fixtures/Datahandler/be_users.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Datahandler/backendLayoutIsSetForConfiguredDoktype.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Datahandler/be_users.csv');
         $backendUser = $this->setUpBackendUser(1);
         $GLOBALS['BE_USER'] = $backendUser;
         Bootstrap::initializeLanguageObject();
