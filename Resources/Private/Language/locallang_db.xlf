@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2024-13-13T13:13:13Z">
+		<header>
+			<description>Language Labels for EXT:doktypemapper</description>
+			<authorName>David Steeb</authorName>
+			<authorEmail>typo3@b13.com</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="backend_layout.3.title">
+				<source>Empty Page (External Link)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.4.title">
+				<source>Empty Page (Shortcut)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.6.title">
+				<source>Empty Page (Backend User Section)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.7.title">
+				<source>Empty Page (Mountpoint)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.199.title">
+				<source>Empty Page (Spacer)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.254.title">
+				<source>Empty Page (Folder)</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.255.title">
+				<source>Empty Page (Recycler)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

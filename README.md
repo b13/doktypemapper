@@ -34,6 +34,13 @@ TCEFORM.pages.backend_layout.disabled = 1
 TCEFORM.pages.backend_layout_next_level.disabled = 1
 ```
 
+### Note
+
+This extension comes with a default empty backend_layout configuration (see `Configuration/PageTs/main.tsconfig`) for
+TYPO3's default "empty" page types (like Shortcut, External Link, etc.) to ensure valid database entries for every page
+type (even the ones without any content).
+
+
 ## Credits
 
 This extension was created by Achim Fritz in 2021 for [b13 GmbH, Stuttgart](https://b13.com).
