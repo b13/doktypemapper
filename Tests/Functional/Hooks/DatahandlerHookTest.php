@@ -12,9 +12,10 @@ namespace B13\Doktypemapper\Tests\Functional\Hooks;
  * of the License, or any later version.
  */
 
-use TYPO3\CMS\Core\Core\Bootstrap;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -33,7 +34,7 @@ class DatahandlerHookTest extends FunctionalTestCase
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Datahandler/be_users.csv');
         $backendUser = $this->setUpBackendUser(1);
         $GLOBALS['BE_USER'] = $backendUser;
-        Bootstrap::initializeLanguageObject();
+        $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)->createFromUserPreferences($GLOBALS['BE_USER']);
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
         $data = [
             'pages' => [
@@ -48,9 +49,9 @@ class DatahandlerHookTest extends FunctionalTestCase
         $row = $queryBuilder->select('*')
             ->from('pages')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter(1, Connection::PARAM_INT))
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAssociative();
         self::assertSame('pagets__exampleKey', $row['backend_layout']);
     }

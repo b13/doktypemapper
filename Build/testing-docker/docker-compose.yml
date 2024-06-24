@@ -84,10 +84,10 @@ services:
         php -v | grep '^PHP';
         if [ ${TYPO3} -eq 11 ]; then
           composer require typo3/cms-backend:^11.5 --dev -W --no-progress --no-interaction
-        elif [ ${TYPO3} -eq 10 ]; then
-          composer require friendsofphp/php-cs-fixer:~3.9.0 typo3/cms-backend:^10.4 typo3/testing-framework:^6 --dev -W --no-progress --no-interaction
-        else
+        elif [ ${TYPO3} -eq 12 ]; then
           composer require typo3/cms-backend:^12.4 --dev -W --no-progress --no-interaction
+        else
+          composer install --dev --no-progress --no-interaction
         fi
       "
 
@@ -179,7 +179,7 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        php -dxdebug.mode=off .Build/bin/phpstan analyze -c Build/phpstan${TYPO3}.neon --no-progress --no-interaction
+        php -dxdebug.mode=off .Build/bin/phpstan analyze -c Build/phpstan.neon --no-progress --no-interaction
       "
 
   unit:

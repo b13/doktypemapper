@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 
 class DatahandlerHook implements SingletonInterface
 {
-    protected $previousBackendLayout;
+    protected ?string $previousBackendLayout = null;
 
     /**
      * @param array $fieldArray
