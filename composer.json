@@ -14,7 +14,7 @@
 	},
 	"require": {
 		"php": "^7.4 || ^8.0",
-		"typo3/cms-backend": "^10.4 || ^11.5 || 12.*.*@dev"
+		"typo3/cms-backend": "^11.5 || ^12.4 || ^13.1"
 	},
 	"autoload": {
 		"psr-4": {
@@ -22,11 +22,10 @@
 		}
 	},
 	"require-dev": {
-		"typo3/testing-framework": "~7.0@dev",
-		"typo3/coding-standards": "^0.5",
-		"phpstan/phpstan": "^1.4.8",
-		"typo3/tailor": "^1.0",
-		"phpunit/phpunit": "^9.5"
+		"saschaegerer/phpstan-typo3": "^1.8",
+		"typo3/coding-standards": "^0.5.5",
+		"typo3/tailor": "^1.1",
+		"typo3/testing-framework": "^7.0 || ^8.0"
 	},
 	"config": {
 		"vendor-dir": ".Build/vendor",
@@ -35,11 +34,6 @@
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		}
-	},
-	"scripts": {
-		"post-autoload-dump": [
-			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
-		]
 	},
 	"autoload-dev": {
 		"psr-4": {
