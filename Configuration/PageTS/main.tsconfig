@@ -1,0 +1,58 @@
+mod.web_layout.BackendLayouts {
+  DefaultLink {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.3.title
+    config.backend_layout {
+      doktype = 3
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultShortcut {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.4.title
+    config.backend_layout {
+      doktype = 4
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultBackendusersection {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.6.title
+    config.backend_layout {
+      doktype = 6
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultMountpoint {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.7.title
+    config.backend_layout {
+      doktype = 7
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultSpacer {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.199.title
+    config.backend_layout {
+      doktype = 199
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultFolder {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.254.title
+    config.backend_layout {
+      doktype = 254
+      colCount = 0
+      rowCount = 0
+    }
+  }
+  DefaultRecycler {
+    title = LLL:EXT:doktypemapper/Resources/Private/Language/locallang_db.xlf:backend_layout.255.title
+    config.backend_layout {
+      doktype = 255
+      colCount = 0
+      rowCount = 0
+    }
+  }
+}
