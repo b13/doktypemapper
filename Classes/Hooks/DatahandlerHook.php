@@ -12,12 +12,13 @@ namespace B13\Doktypemapper\Hooks;
  * of the License, or any later version.
  */
 
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
-class DatahandlerHook implements SingletonInterface
+#[Autoconfigure(public: true)]
+class DatahandlerHook
 {
     protected ?string $previousBackendLayout = null;
 
