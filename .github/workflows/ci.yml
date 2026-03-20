@@ -13,33 +13,46 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        php: [ '7.4', '8.0', '8.1' ]
-        TYPO3: [ '11' ]
-        include:
-          - TYPO3: '12'
-            php: '8.1'
-          - TYPO3: '13'
-            php: '8.3'
-          - TYPO3: '14'
-            php: '8.4'
+        php: [ '8.2', '8.5' ]
+        TYPO3: [ '13', '14' ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Install testing system
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s composerInstall
+      - name: Set up PHP Version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
 
-      - name: Composer validate
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s composerValidate
+      - name: Start MySQL
+        run: sudo /etc/init.d/mysql start
 
-      - name: Lint PHP
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s lint
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-      - name: CGL
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s cgl -n
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache
+          key: dependencies-composer-${{ hashFiles('composer.json') }}
 
-      - name: phpstan
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s phpstan
-
-      - name: Functional Tests with mariadb
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -t ${{ matrix.TYPO3 }} -s functional
+      - name: Install composer dependencies TYPO3 14
+        if: matrix.TYPO3 == '14'
+        run: |
+          composer install --no-progress --no-interaction
+      - name: Install composer dependencies TYPO3 13
+        if: matrix.TYPO3 == '13'
+        run: |
+          composer require typo3/cms-backend:^13.4 --no-progress --no-interaction --dev -W
+      - name: Phpstan
+        run: .Build/bin/phpstan analyze -c Build/phpstan.neon
+      - name: Phpcsfix
+        run: .Build/bin/php-cs-fixer fix --config=Build/php-cs-fixer.php --dry-run --stop-on-violation --using-cache=no
+      - name: Functional Tests
+        run: |
+          export typo3DatabaseName="typo3";
+          export typo3DatabaseHost="127.0.0.1";
+          export typo3DatabaseUsername="root";
+          export typo3DatabasePassword="root";
+          .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml Tests/Functional

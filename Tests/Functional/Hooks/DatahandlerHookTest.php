@@ -12,6 +12,7 @@ namespace B13\Doktypemapper\Tests\Functional\Hooks;
  * of the License, or any later version.
  */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
@@ -25,9 +26,7 @@ class DatahandlerHookTest extends FunctionalTestCase
         'typo3conf/ext/doktypemapper',
     ];
 
-    /**
-     * @test
-     */
+    #[Test]
     public function backendLayoutIsSetForConfiguredDoktype(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Datahandler/backendLayoutIsSetForConfiguredDoktype.csv');
