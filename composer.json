@@ -7,13 +7,15 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "doktypemapper",
+			"version": "3.0.1",
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"app-dir": ".Build",
 			"web-dir": ".Build/Web"
 		}
 	},
 	"require": {
-		"typo3/cms-backend": "^13.4 || ^14.1"
+		"typo3/cms-backend": "^13.4 || ^14.1",
+		"typo3/cms-core": "^13.4 || ^14.1"
 	},
 	"autoload": {
 		"psr-4": {
